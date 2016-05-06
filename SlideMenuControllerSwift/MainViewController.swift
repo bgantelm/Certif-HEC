@@ -7,12 +7,36 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
     @IBOutlet weak var MyMAp: MKMapView!
+    let locationManager = CLLocationManager()
+    var ecoleLocation : CLLocationCoordinate2D?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+            self.MyMAp.showsUserLocation = true
+
+
+        self.ecoleLocation = CLLocationCoordinate2DMake(48.896466, 2.318488)
+           let mapCamera = MKMapCamera(lookingAtCenterCoordinate: ecoleLocation!, fromEyeCoordinate: self.ecoleLocation!, eyeAltitude: 1000)
+            MyMAp.setCamera(mapCamera, animated: true)
+    
+    }
+    
+    @IBAction func Local(sender: AnyObject) {
+        let location = self.locationManager.location
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let mapCamera = MKMapCamera(lookingAtCenterCoordinate: center, fromEyeCoordinate: center, eyeAltitude: 1000)
+        MyMAp.setCamera(mapCamera, animated: true)
+        self.locationManager.stopUpdatingHeading()
+        
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

@@ -1,0 +1,20 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+use_frameworks!
+
+xcodeproj 'HEC_2.xcodeproj'
+
+target 'HEC_2' do
+	pod 'PathMenu'
+	pod 'SideMenu'
+end
+
+target 'HEC_2Tests' do
+
+end
+
+target 'HEC_2UITests' do
+
+end
+

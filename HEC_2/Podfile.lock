@@ -1,0 +1,13 @@
+PODS:
+  - PathMenu (1.1.0)
+  - SideMenu (1.1.6)
+
+DEPENDENCIES:
+  - PathMenu
+  - SideMenu
+
+SPEC CHECKSUMS:
+  PathMenu: 3743f569d97645c3eb673a67388d176258d183d5
+  SideMenu: 187f2b1b087e69f7db5032dba8b5b32091c8e345
+
+COCOAPODS: 0.39.0

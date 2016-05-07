@@ -1,0 +1,10 @@
+framework module PathMenu {
+  umbrella header "PathMenu.h"
+
+  export *
+  module * { export * }
+}
+
+module PathMenu.Swift {
+    header "PathMenu-Swift.h"
+}
